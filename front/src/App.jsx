@@ -108,6 +108,7 @@ function App() {
         register={register}
         obj={objProduct}
         change={change}
+        reset={resetProduct}
       />
       <ProductTable
         products={products}
@@ -118,7 +119,7 @@ function App() {
   );
 }
 
-const ProductForm = ({ typeEvent, register, obj, change }) => {
+const ProductForm = ({ typeEvent, register, obj, change, reset }) => {
   return (
     <div className="product-form">
       <h1>Form</h1>
@@ -150,6 +151,7 @@ const ProductForm = ({ typeEvent, register, obj, change }) => {
       />
       <input type="button" value="Register" onClick={register} />
       <input type="button" value="Change" onClick={change}></input>
+      <input type="button" value="Reset" onClick={reset}></input>
     </div>
   );
 };
