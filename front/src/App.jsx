@@ -42,13 +42,17 @@ function App() {
         } else{
           setProducts([...products, returnConverted]);
           alert("Cadastro efetuado!");
+          resetObject();
         }
       });
+  }
+
+  const resetObject = () => {
+    setObjProduct(product);
   }
   
   return (
     <>
-      <p>{JSON.stringify(objProduct)}</p>
       <ProductForm typeEvent={type} register={register}/>
       <ProductTable products={products}/>
     </>
@@ -61,7 +65,7 @@ const ProductForm = ({typeEvent, register}) => {
         <h1>Form</h1>
         <input type="text" onChange={typeEvent} placeholder='name' name="name"/>
         <select id="category" name="category" onChange={typeEvent}>
-          <option value="Null">-</option>
+          <option value="Null"></option>
           <option value="Shirts">Shirts</option>
           <option value="Pants">Pants</option>
           <option value="Footwear">Footwear</option>
@@ -84,7 +88,7 @@ const ProductTable = ({products}) => {
                 <th>Name</th>
                 <th>Category</th>
                 <th>Price</th>
-                <th>Select</th>
+                <th>Options</th>
               </tr>
             </thead>
             <tbody>
@@ -95,7 +99,7 @@ const ProductTable = ({products}) => {
                       <td>{obj.name}</td>
                       <td>{obj.category}</td>
                       <td>{obj.value}</td>
-                      <td><input type='checkbox'/></td>
+                      <td><button>Deletar</button><button>Editar</button></td>
                     </tr>
                   )})
                 }

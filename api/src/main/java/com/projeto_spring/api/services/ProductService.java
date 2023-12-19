@@ -22,12 +22,23 @@ public class ProductService {
         return pr.findAll();
     }
 
-    public ResponseEntity<?> register(Product product){
+    public ResponseEntity<?> registerOrChange(Product product, String action){
         if(product.getName().equals("")){
             rm.setMsg("Name is mandatory.");
             return new ResponseEntity<ResponseModel>(rm, HttpStatus.BAD_REQUEST);
         } else {
-            return new ResponseEntity<Product>(pr.save(product), HttpStatus.CREATED);
+            if(action.equals("register")){
+                return new ResponseEntity<Product>(pr.save(product), HttpStatus.CREATED);
+            } else {
+                return new ResponseEntity<Product>(pr.save(product), HttpStatus.OK);
+            }
         }
+    }
+    
+    public ResponseEntity<ResponseModel> remove(long codigo){
+
+        pr.deleteById(codigo);
+        rm.setMsg("O produto foi removido!");
+        return new ResponseEntity<ResponseModel>(rm, HttpStatus.OK);
     }
 }
