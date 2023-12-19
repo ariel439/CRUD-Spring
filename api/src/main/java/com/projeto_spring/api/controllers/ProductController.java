@@ -24,28 +24,28 @@ public class ProductController {
     @Autowired
     private ProductService ps;
 
-    @DeleteMapping("/remover/{id}")
-    public ResponseEntity<ResponseModel> remove(@PathVariable long id){
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<ResponseModel> remove(@PathVariable long id) {
         return ps.remove(id);
     }
-    
+
     @GetMapping("/")
-    public String route(){
+    public String route() {
         return "This is the products API";
     }
 
     @GetMapping("/list")
-    public Iterable<Product> list(){
+    public Iterable<Product> list() {
         return ps.list();
     }
 
     @PostMapping("/register")
-    public ResponseEntity<?> register(@RequestBody Product product){
+    public ResponseEntity<?> register(@RequestBody Product product) {
         return ps.registerOrChange(product, "register");
     }
 
     @PutMapping("/change")
-        public ResponseEntity<?> change(@RequestBody Product product){
+    public ResponseEntity<?> change(@RequestBody Product product) {
         return ps.registerOrChange(product, "change");
     }
 }

@@ -3,7 +3,8 @@
   margin: 0;
 }
 
-table th, td{
+table th,
+td {
   border: 1px solid;
 }
 
@@ -12,6 +13,6 @@ table {
   width: 50%;
 }
 
-td{
+td {
   text-align: center;
 }
