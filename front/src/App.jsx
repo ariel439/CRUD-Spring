@@ -123,82 +123,84 @@ const ProductForm = ({ typeEvent, register, obj, change, reset }) => {
   return (
     <div className="product-form">
       <h1>Form</h1>
-      <input
-        type="text"
-        onChange={typeEvent}
-        placeholder="name"
-        name="name"
-        value={obj.name}
-      />
-      <select
-        id="category"
-        name="category"
-        onChange={typeEvent}
-        value={obj.category}
-      >
-        <option value="Null"></option>
-        <option value="Shirts">Shirts</option>
-        <option value="Pants">Pants</option>
-        <option value="Footwear">Footwear</option>
-        <option value="Jackets">Jackets</option>
-      </select>
-      <input
-        type="number"
-        placeholder="0.00"
-        name="value"
-        onChange={typeEvent}
-        value={obj.value}
-      />
-      <input type="button" value="Register" onClick={register} />
-      <input type="button" value="Change" onClick={change}></input>
-      <input type="button" value="Reset" onClick={reset}></input>
+      <div className="form">
+        <p>ID: </p>
+        <input className="input-id" disabled value={obj.id}></input>
+        <p>Name:</p>
+        <input type="text" onChange={typeEvent} name="name" value={obj.name} />
+        <p>Category:</p>
+        <select
+          id="category"
+          name="category"
+          onChange={typeEvent}
+          value={obj.category}
+        >
+          <option value="Null"></option>
+          <option value="Shirts">Shirts</option>
+          <option value="Pants">Pants</option>
+          <option value="Footwear">Footwear</option>
+          <option value="Jackets">Jackets</option>
+        </select>
+        <p>Value:</p>
+        <input
+          type="number"
+          name="value"
+          onChange={typeEvent}
+          value={obj.value}
+        />
+        <input type="button" value="Register" onClick={register} />
+        <input type="button" value="Change" onClick={change}></input>
+        <input type="button" value="Reset" onClick={reset}></input>
+      </div>
     </div>
   );
 };
 
 const ProductTable = ({ products, select, remove }) => {
   return (
-    <div>
-      <h1>Table</h1>
-      <table>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Category</th>
-            <th>Price</th>
-            <th>Options</th>
-          </tr>
-        </thead>
-        <tbody>
-          {products.map((obj, i) => {
-            return (
-              <tr key={i}>
-                <td>{obj.id}</td>
-                <td>{obj.name}</td>
-                <td>{obj.category}</td>
-                <td>{obj.value}</td>
-                <td>
-                  <button
-                    onClick={() => {
-                      remove(obj.id, i);
-                    }}
-                  >
-                    Delete
-                  </button>
-                  <button
-                    onClick={() => {
-                      select(i);
-                    }}
-                  >
-                    Select
-                  </button>
-                </td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+    <div className="product-table">
+      <h1>Products Table</h1>
+      <div className="table">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Category</th>
+              <th>Price</th>
+              <th>Options</th>
+            </tr>
+          </thead>
+          <tbody>
+            {products.map((obj, i) => {
+              return (
+                <tr key={i}>
+                  <td>{obj.id}</td>
+                  <td>{obj.name}</td>
+                  <td>{obj.category}</td>
+                  <td>{obj.value}</td>
+                  <td>
+                    <button
+                      onClick={() => {
+                        remove(obj.id, i);
+                      }}
+                    >
+                      Delete
+                    </button>
+                    <button
+                      onClick={() => {
+                        select(i);
+                      }}
+                    >
+                      Select
+                    </button>
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };
