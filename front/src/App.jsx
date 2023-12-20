@@ -150,9 +150,9 @@ const ProductForm = ({ typeEvent, register, obj, change, reset }) => {
         />
       </div>
       <div className="form-buttons">
-        <input type="button" value="Register" onClick={register} />
-        <input type="button" value="Change" onClick={change}></input>
-        <input type="button" value="Reset" onClick={reset}></input>
+        {obj.id == 0 ? <input type="button" value="Register" onClick={register} /> : null}
+        {obj.id != 0 ? <input type="button" value="Change" onClick={change}/>: null}
+        {obj.id != 0 ? <input type="button" value="Cancel" onClick={reset}/>: null}
       </div>
       <div></div>
     </div>
