@@ -23,6 +23,7 @@ td {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 20px;
 }
 
 .form {
@@ -35,10 +36,16 @@ td {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 10px;
 }
 
 .input-id {
   min-width: 30px;
   max-width: 60px;
   text-align: center;
+}
+
+.form-buttons {
+  display: flex;
+  gap: 10px;
 }

@@ -148,10 +148,13 @@ const ProductForm = ({ typeEvent, register, obj, change, reset }) => {
           onChange={typeEvent}
           value={obj.value}
         />
+      </div>
+      <div className="form-buttons">
         <input type="button" value="Register" onClick={register} />
         <input type="button" value="Change" onClick={change}></input>
         <input type="button" value="Reset" onClick={reset}></input>
       </div>
+      <div></div>
     </div>
   );
 };
